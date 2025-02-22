@@ -1,41 +1,16 @@
 import MainHeading from "@/components/main-heading";
 import Menu from "@/components/menu";
-import { formatCurrency } from "@/lib/formatts";
-import Image from "next/image";
+import { db } from "@/lib/prisma";
 
-function BestSellers() {
-  //! Dummy Data Array:
-  const bestSellers = [
-    {
-      id:crypto.randomUUID(),
-      name:'Pizza One',
-      description:'This is a pizza',
-      basePrice:10,
-      image:'/assets/pizza-2.jpg'
-    },
-    {
-      id:crypto.randomUUID(),
-      name:'Pizza Two',
-      description:'This is a pizza',
-      basePrice:10,
-      image:'/assets/pizza-3.png'
-    },
-    {
-      id:crypto.randomUUID(),
-      name:'Pizza Three',
-      description:'This is a pizza',
-      basePrice:10,
-      image:'/assets/pizza-4.jpg'
-    },
-    {
-      id:crypto.randomUUID(),
-      name:'Pizza Four',
-      description:'This is a pizza',
-      basePrice:10,
-      image:'/assets/pizza.png'
+
+async function BestSellers() {
+  const bestSellers = await db.product.findMany({
+    include:{
+      sizes:true,
+      extras:true,
     }
-  ]
-  
+  })
+
   return (
     <section>
       <div className="container">

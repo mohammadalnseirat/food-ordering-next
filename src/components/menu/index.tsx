@@ -1,7 +1,8 @@
 import React from 'react'
 import MenuItem from './MenuItem'
+import { ProductWithRelations } from '@/types/product.type'
 
-function Menu({items}:{items:any}) {
+function Menu({items}:{items:ProductWithRelations[]}) {
   return (
     <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {

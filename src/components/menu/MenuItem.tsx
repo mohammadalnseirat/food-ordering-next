@@ -1,10 +1,11 @@
 import { formatCurrency } from '@/lib/formatts'
 import Image from 'next/image'
 import AddToCartButton from './AddToCartButton'
+import { ProductWithRelations } from '@/types/product.type'
 
-function MenuItem({item}:{item:any}) {
+function MenuItem({item}:{item:ProductWithRelations}) {
   return (
-    <li className='flex flex-col items-center gap-2 p-4 border rounded-lg'>
+    <li className='flex flex-col items-center gap-2 p-4 border rounded-lg relative'>
               <div className="relative size-48 mx-auto">
                 <Image
                 src={item.image}
@@ -19,7 +20,7 @@ function MenuItem({item}:{item:any}) {
                   {formatCurrency(item.basePrice)}
                 </strong>
               </div>
-              <p className="text-gray-600 text-sm md:text-lg line-clamp-3 font-medium">{item.description}</p>
+              <p className="text-gray-600 text-sm md:text-md line-clamp-3 font-medium">{item.description}</p>
               <AddToCartButton item={item}/>
             </li>
   )
