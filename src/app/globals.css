@@ -76,4 +76,44 @@ html {
   .container {
     @apply mx-auto px-4 md:px-8 lg:px-16 xl:px-32;
   }
+  .section-gap {
+    @apply my-8 md:my-16;
+  }
 }
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+/* For Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+  width: 8px; /* Width of vertical scrollbar */
+  height: 8px; /* Height of horizontal scrollbar */
+}
+
+/* Track (background of the scrollbar) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Thumb (draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+  background: #ef3901;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+/* Thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f1400bfa;
+}
+

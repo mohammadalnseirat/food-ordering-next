@@ -38,7 +38,7 @@ function Navbar() {
         size={"sm"}
         variant={"secondary"}
       >
-        <Menu className="!w-6 !h-6 text-" />
+        <Menu className="!w-6 !h-6" />
       </Button>
       <ul
         className={`${
@@ -59,7 +59,7 @@ function Navbar() {
               href={`/${link.href}`}
               className={`font-semibold ${
                 link.href === `${Routes.AUTH}/${Pages.LOGIN}`
-                  ? `${buttonVariants({ size: "lg" })} rounded-full !px-8`
+                  ? `${buttonVariants({ size: "lg" })} !rounded-full !px-8`
                   : "text-gray-500 hover:text-primary transition-colors duration-200"
               } `}
             >
