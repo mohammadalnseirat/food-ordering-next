@@ -13,38 +13,96 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product {
-  id String @id @default(cuid())
-  name String 
-  description String
-  image String
-  basePrice Float
-  order Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  //! relation with Product and sizes:
-  sizes  Size[]
-  //! relation with Product and extras:
-  extras Extra[]
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  name          String
+  password      String
+  image         String?
+  phoneNumber   String?
+  country       String?
+  city          String?
+  postleCode    String?
+  streetAddress String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  //! relation with User and OrderProduct:
+  orders OrderProduct[]
 }
 
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  image       String
+  basePrice   Float
+  order       Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  //! relation with Product and sizes:
+  sizes       Size[]
+  //! relation with Product and extras:
+  extras      Extra[]
+  //! relation with Product and category:
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  String
+  //! relation with Product and OrderProduct:
+  orders      OrderProduct[]
+}
 
 model Size {
-  id String @id @default(cuid())
-  name ProdutSize
-  price Float
-  product Product @relation(fields: [productId], references: [id])
+  id        String     @id @default(cuid())
+  name      ProdutSize
+  price     Float
+  product   Product    @relation(fields: [productId], references: [id])
   productId String
+}
+
+model Category {
+  id      String    @id @default(cuid())
+  name    String
+  order   Int       @default(autoincrement())
+  product Product[]
 }
 
 model Extra {
-  id String @id @default(cuid())
-  name ExtraIngredient
-  price Float
- 
+  id        String          @id @default(cuid())
+  name      ExtraIngredient
+  price     Float
+  //! relation with Extra and product:
+  product   Product         @relation(fields: [productId], references: [id])
+  productId String
+}
+
+model Order {
+  id            String   @id @default(cuid())
+  paid          Boolean  @default(false)
+  subtotalPrice Float
+  deliveryFee   Float
+  totalPrice    Float
+  userEmail     String
+  streetAddress String
+  postaleCode   String
+  country       String
+  city          String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  //! relation with Order and OrderProduct:
+  products OrderProduct[]
+}
+
+model OrderProduct {
+  id       String @id @default(cuid())
+  quantity Int
+  order    Order  @relation(fields: [orderId], references: [id])
+  orderId  String
+  user     User?  @relation(fields: [userId], references: [id])
+  userId   String?
+  //! relation with OrderProduct and Product:
   product Product @relation(fields: [productId], references: [id])
   productId String
-
 }
 
 enum ProdutSize {

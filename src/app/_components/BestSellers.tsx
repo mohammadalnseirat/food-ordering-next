@@ -6,7 +6,7 @@ import { getBestSellers } from "@/server/db";
 
 
 async function BestSellers() {
-  const bestSellers = await getBestSellers();
+  const bestSellers = await getBestSellers(6);
 
   return (
     <section>
