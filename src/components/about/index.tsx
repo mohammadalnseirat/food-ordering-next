@@ -71,7 +71,7 @@ function About() {
               businesses. From breakfast to late-night cravings, we’ve got you
               covered.<br/>
             </p>
-            <strong className="text-primary text-xs sm:text-sm md:text-base">Order now and enjoy your next delicious meal hassle-free!</strong>
+            <strong className="text-primary text-sm md:text-base">Order now and enjoy your next delicious meal hassle-free!</strong>
           </div>
         </div>
       </div>
