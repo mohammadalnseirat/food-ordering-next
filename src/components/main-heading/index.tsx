@@ -6,7 +6,7 @@ function MainHeading({ title, subtitle }: { title: string; subtitle: string }) {
       <span className="text-gray-500 uppercase leading-4 font-semibold">
         {subtitle}
       </span>
-      <h2 className="text-primary italic font-bold text-4xl">{title}</h2>
+      <h2 className="text-primary italic font-bold text-4xl capitalize">{title}</h2>
     </>
   );
 }
