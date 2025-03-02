@@ -6,11 +6,11 @@ import Image from "next/image";
 
 function Hero() {
   return (
-    <section className="section-gap">
+    <section className="section-page">
       <div className="container grid grid-cols-1 md:grid-cols-2">
         {/* Hero Left Side Content Start Here */}
         <div className="md:py-12">
-          <h1 className="text-4xl font-semibold">Slice Into Happiness</h1>
+          <h1 className="text-3xl sm:text-4xl font-semibold">Slice Into Happiness</h1>
           <p className="text-gray-500 my-5">
             Craving Pizza? We have got you covered with fresh intredients,
             endless flavor, and the fatest delivery, your perfect slice is just

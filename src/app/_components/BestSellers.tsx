@@ -9,7 +9,7 @@ async function BestSellers() {
   const bestSellers = await getBestSellers(6);
 
   return (
-    <section>
+    <section className="section-page">
       <div className="container">
       <div className="mb-4 text-center">
         <MainHeading title="Our Best Sellers" subtitle="check out" />

@@ -76,7 +76,7 @@ html {
   .container {
     @apply mx-auto px-4 md:px-8 lg:px-16 xl:px-32;
   }
-  .section-gap {
+  .section-page {
     @apply my-8 md:my-16;
   }
 }

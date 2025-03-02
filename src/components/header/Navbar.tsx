@@ -4,9 +4,11 @@ import Link from "../link";
 import { Button, buttonVariants } from "../ui/button";
 import { useState } from "react";
 import { Menu, XIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
+ const pathname = usePathname()
   //! Array For Links:
   const links = [
     {
@@ -60,8 +62,14 @@ function Navbar() {
               className={`font-semibold ${
                 link.href === `${Routes.AUTH}/${Pages.LOGIN}`
                   ? `${buttonVariants({ size: "lg" })} !rounded-full !px-8`
-                  : "text-gray-500 hover:text-primary transition-colors duration-200"
-              } `}
+                  : " hover:text-primary transition-colors duration-200"
+              } 
+              ${
+                pathname === `/${link.href}`
+                  ? "text-primary"
+                  : "text-gray-500"
+              }
+              `}
             >
               {link.title}
             </Link>
